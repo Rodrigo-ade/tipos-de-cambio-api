@@ -1,0 +1,25 @@
+{
+  "name": "tipos-de-cambio-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "abrir-cypress":"cypress open",
+    "abrir-cypress-terminal":"cypress run",
+    "abrir-servidor":"http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rodrigo-ade/tipos-de-cambio-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rodrigo-ade/tipos-de-cambio-api/issues"
+  },
+  "homepage": "https://github.com/Rodrigo-ade/tipos-de-cambio-api#readme",
+  "devDependencies": {
+    "cypress": "^12.7.0"
+  }
+}
