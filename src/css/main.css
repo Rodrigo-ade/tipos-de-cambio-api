@@ -1,0 +1,20 @@
+header {
+    border-bottom: 3px solid grey;
+    margin-bottom: 3px;
+}
+.separado {
+    margin-bottom: 3px;
+}
+.separadoXL{
+    margin-bottom: 10px;
+}
+.error{
+    color: red;
+}
+#tasa-fecha{
+    font-size: 18px;
+    background-color: grey;
+}
+.oculto{
+    display: none;
+}
