@@ -3,6 +3,7 @@ const FECHA_VALIDA = "2011-07-09";
 const FECHA_INVALIDA = "1990-12-06";
 const BASE = "USD";
 
+
 context("Tasas de cambio", () => {
   before(() => {
     cy.visit(URL);
@@ -12,9 +13,13 @@ context("Tasas de cambio", () => {
   it("Verifica que se obtengan datos con una fecha correcta", () => {
     cy.get("#fecha").type(FECHA_VALIDA);
     cy.get("#obtener-cambio").click();
-    cy.wait(10000);//ESPERA DEL API RESPONSE, DEBE HACERSE DE OTRA FORMA.
-    cy.get("#tasas-de-cambio").should("be.visible");
-    cy.get("tbody tr").should('have.length.of.at.least', 10);
+
+    cy.intercept(`https://api.apilayer.com/exchangerates_data/${FECHA_VALIDA}&base=${BASE}`).as("respuesta");
+    cy.wait("@respuesta").then((respuesta) => {
+      cy.wait(1000);
+      cy.get("#tasas-de-cambio").should("be.visible");
+      cy.get("tbody tr").should('have.length.of.at.least', 10);
+    });
   });
 
   it("Verifica que la fecha de los datos deseados sea igual a la fecha obtenida", () => {
@@ -36,9 +41,13 @@ context("Tasas de cambio", () => {
     it("Verifica que se obtengan los datos del día actual", () => {
       cy.visit(URL);
       cy.get("#obtener-cambio").click();
-      cy.wait(10000);//ESPERA DEL API RESPONSE, DEBE HACERSE DE OTRA FORMA.
-      cy.get("#tasas-de-cambio").should("be.visible");
-      cy.get("tbody tr").should('have.length.of.at.least', 10);
+
+      cy.intercept(`https://api.apilayer.com/exchangerates_data/latest?base=${BASE}`).as("respuestaAPI");
+      cy.wait("@respuestaAPI").then((respuesta) => {
+        cy.wait(1000);
+        cy.get("#tasas-de-cambio").should("be.visible");
+        cy.get("tbody tr").should('have.length.of.at.least', 10);
+      })
     });
   });
 });
