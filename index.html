@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Tipos de cambio - API</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel='stylesheet' type='text/css' media='screen' href='src\css\main.css'>
+    
+</head>
+<body>
+  <header>
+    <div class="container text-center separado">
+      <div class="row">
+        <div class="col">
+          <h1>Tipos de cambio</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>Elige solo la <strong>moneda base</strong> para ver sus tipos de cambio en el día de hoy.</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>Si lo deseas, elíge tambien una <strong>fecha</strong> para ver el cambio en ese día (hasta el año 2000) </h5>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container text-center separado">
+      <div class="row">
+        <div class="col">
+          Moneda base 
+        </div>
+        <div class="col">
+          <input type="radio" id="base1" name="base" value="USD" checked> <label for="base1">Dolar</label>
+          <input type="radio" id="base2" name="base" value="EUR"> <label for="base2">Euro</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          Fecha <strong>(opcional)</strong> desde el año 2000 en adelante
+        </div>
+        <div class="col">
+          <input type="date" min="2000-01-01" id="fecha">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col separadoXL">
+          <button id="obtener-cambio">Obtener cambio</button>
+        </div>
+      </div>  
+    </div>
+    <div id="tasas-de-cambio" class="oculto">
+      <table class="table table-hover text-center table-sm">
+        <thead>
+          <tr>
+            <th colspan="3" id="tasa-fecha"></th>
+          </tr>
+          <tr>
+            <th scope="col">Moneda</th>
+            <th scope="col">Valor al cambio</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+  </main>
+
+  <script src='src\js\validaciones.js'></script>
+  <script src='src\js\index.js'></script>
+</body>
+</html>
